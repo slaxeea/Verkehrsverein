@@ -1,0 +1,59 @@
+{
+    "selectors":[
+        {
+            "title": "Weather",
+            "good": "Good",
+            "bad": "Bad",
+            "all": "Always"
+        }, {
+            "title": "Time",
+            "good": "Day",
+            "bad": "Night",
+            "all": "Always"
+        }, {
+            "title": "In Holidays",
+            "good": "Yes",
+            "bad": "No",
+            "all": "Always"
+        }, {
+            "title": "Kids",
+            "good": "Yes",
+            "bad": "No",
+            "all": "Both"
+        }, {
+            "title": "On Weekends",
+            "good": "Yes",
+            "bad": "No",
+            "all": "All Week"
+        }
+    ],
+
+    "th":[
+        "Name",
+        "Kids",
+        "Weather",
+        "Weekend",
+        "Holiday"
+    ],
+
+    "reset": "Reset",
+
+    "search": "Search for",
+
+    "results": "Results",
+    
+    "yes": "Yes",
+
+    "no": "No",
+
+    "day": "Day",
+
+    "night": "Night",
+    
+    "all": "Always",
+
+    "bad": "Bad",
+
+    "good": "Good"
+
+}

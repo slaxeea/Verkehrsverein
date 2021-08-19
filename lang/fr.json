@@ -1,0 +1,59 @@
+{
+    "selectors":[
+        {
+            "title": "Météo",
+            "good": "Bon",
+            "bad": "Mauvais",
+            "all": "Toujours"
+        }, {
+            "title": "Temps",
+            "good": "Jour",
+            "bad": "Nuit",
+            "all": "Toujours"
+        }, {
+            "title": "En vacances",
+            "good": "Oui",
+            "bad": "Non",
+            "all": "Toujours"
+        }, {
+            "title": "Kids",
+            "good": "Oui",
+            "bad": "Non",
+            "all": "Les deux"
+        }, {
+            "title": "Les week-ends",
+            "good": "Oui",
+            "bad": "Non",
+            "all": "Toute la semaine"
+        }
+    ],
+
+    "th":[
+        "Nom",
+        "Enfants",
+        "Météo",
+        "Weekend",
+        "Vacances"
+    ],
+
+    "reset": "Réinitialiser",
+
+    "search": "Recherche de",
+
+    "results": "Résultats",
+    
+    "yes": "Oui",
+
+    "no": "Non",
+
+    "day": "Jour",
+
+    "night": "Nuit",
+    
+    "all": "Toujours",
+
+    "bad": "Mauvais",
+
+    "good": "Bon"
+
+}

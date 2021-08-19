@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"><script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <script src="languages.js"></script>
+    <title>Verkehrsverein</title>
+</head>
+<body>
+    <div class="content">
+        
+    <div class="select">
+        <p>Search by:</p>
+
+        <div class="block">
+        <p class="inline" id="selector0"></p> 
+        <button class="select-btn wetter" id="sel-btn0-good"></button>
+        <button class="select-btn wetter" id="sel-btn0-bad" ></button>
+        <button class="select-btn wetter" id="sel-btn0-all"></button>
+
+        <br>
+
+        <p class="inline" id="selector1"></p>
+        <button class="select-btn zeit" id="sel-btn1-good"></button>
+        <button class="select-btn zeit" id="sel-btn1-bad"></button>
+        <button class="select-btn zeit" id="sel-btn1-all"></button>
+   
+        <br>
+
+        <p class="inline" id="selector2"></p>
+        <button class="select-btn ferien" id="sel-btn2-good"></button>
+        <button class="select-btn ferien" id="sel-btn2-bad"></button>
+        <button class="select-btn ferien" id="sel-btn2-all"></button>
+    </div>
+
+    <div class="block">
+        <p class="inline" id="selector3"></p> 
+        <button class="select-btn kinder" id="sel-btn3-good"></button>
+        <button class="select-btn kinder" id="sel-btn3-bad"></button>
+        <button class="select-btn kinder" id="sel-btn3-all"></button>
+
+        <br>
+        
+        <p class="inline" id="selector4"></p> 
+        <button class="select-btn wochenende" id="sel-btn4-good"></button>
+        <button class="select-btn wochenende" id="sel-btn4-bad"></button>
+        <button class="select-btn wochenende" id="sel-btn4-all"></button>
+
+        <br>
+
+        <button class="button" id="reset">reset</button>
+
+        <p class="inline">Resultate:  </p><p class="inline" id="count">0</p>
+    </div>
+</div>
+    <table class="table" id="table">
+        <tr>
+          <th id="th0">name</th>
+          <th id="th1">kids</th>
+          <th id="th2">weather</th>
+          <th id="th3">time</th>
+          <th id="th4">open</th>
+          <th id="th5">holiday</th>
+        </tr>
+        <tr id="firstrow">
+        </tr>
+      </table> 
+
+      
+    </div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        window.count =0;
+        renderNormal();
+        loadLanguage("de");
+    });
+
+    $("#reset").click(
+        function(){
+        resetcount();
+        var collection = $(".row");
+        collection.each(function() {
+            $(this).remove();
+        });
+        var count=0;
+        $.getJSON('events.json', function(data) {
+        events = data.items;
+        $.each(events, function(key, val) {
+            // console.log(val);
+            count = inc(count);
+            $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
+           });
+        col = $(".select-btn");
+        col.each(function() {   
+            $(".select-btn").css("background-color", "rgba(214, 243, 253, 0.836)");
+        });
+        });} 
+
+    );
+
+    function renderNormal(){
+        var counter =0;
+        $.getJSON('events.json', function(data) {
+        events = data.items;
+        $.each(events, function(key, val) {
+            counter = inc(counter);
+            $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
+            
+        });
+        col = $(".select-btn");
+        col.each(function() {   
+            $(".select-btn").css("background-color", "rgba(214, 243, 253, 0.836)");
+        });
+        });
+        
+    };
+
+    function inc(current){
+        var count = current;
+        count++;
+        window.count=count;
+        $("#count").text(count);
+        return count;
+    }
+    function resetcount(){
+        window.count=0;        
+        $("#count").text("0");
+    }
+    
+    $(".select-btn").click(function(){
+        // console.log (`You selected: ${$(this).text()}`);
+        id = $(this).attr("class").replace('select-btn ', '');
+        var col = $("."+id);
+        col.each(function() {
+            $(this).css("background-color", "rgba(214, 243, 253, 0.836)");
+        });
+        $(this).css("background-color", "rgba(0, 0, 0, 0.171)");
+        
+        rerender(id, $(this).text());
+    });
+    
+    function rerender(criteria, value){
+        empty();
+
+        $.getJSON('events.json', function(data) {
+        events = data.items;
+        var newcount =0;
+        $.each(events, function(key, val) {  
+            resetcount();
+            switch(criteria){
+                case 'wetter': 
+                if(val.weather == value || value == 'all' || val.weather=='all'){insert()};
+                break;
+                case 'zeit': 
+                if(val.time == value || value == 'all' || val.time=='all'){insert()};
+                break;
+                case 'ferien': 
+                if(val.holiday == value || value == 'all' || val.holiday=='all'){insert()};
+                break;
+                case 'kinder': 
+                if(val.kids == value || value == 'all' || val.kids=='all'){insert()};
+                break;
+                case 'wochenende': 
+                if(val.open == value || value == 'all' || val.open=='all'){insert()};
+                break;                
+            }
+            function insert(){
+            newcount = inc(newcount);   
+            $(`<tr class="row" id="row">  <td>${getWord(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
+            
+        }
+        });
+        });
+    };
+    function empty(){
+        var collection = $(".row");
+        collection.each(function() {
+            $(this).remove();
+        });
+    }
+
+
+</script>
+
+
+</html>
