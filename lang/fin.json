@@ -1,0 +1,59 @@
+{
+    "selectors":[
+        {
+            "title": "Sää",
+            "good": "Hyvä",
+            "bad": "Huono",
+            "all": "Aina"
+        }, {
+            "title": "Aika",
+            "good": "Päivä",
+            "bad": "Yö",
+            "all": "Aina"
+        }, {
+            "title": "Lomalla",
+            "good": "Kyllä",
+            "bad": "Huono",
+            "all": "Aina"
+        }, {
+            "title": "Kids",
+            "good": "Kyllä",
+            "bad": "Huono",
+            "all": "Les deux"
+        }, {
+            "title": "Les week-ends",
+            "good": "Kyllä",
+            "bad": "Huono",
+            "all": "Koko viikon"
+        }
+    ],
+
+    "th":[
+        "Nimi",
+        "Lapset",
+        "Sää",
+        "Viikonloppu",
+        "Lomat"
+    ],
+
+    "reset": "Nollaa",
+
+    "search": "Etsi",
+
+    "results": "Tulokset",
+    
+    "yes": "Kyllä",
+
+    "no": "Ei",
+
+    "day": "Päivä",
+
+    "night": "Yö",
+    
+    "all": "Aina",
+
+    "bad": "Huono",
+
+    "good": "Hyvä"
+
+}
