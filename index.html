@@ -12,6 +12,16 @@
     <title>Verkehrsverein</title>
 </head>
 <body>
+    <div class="lang-select">
+        <div id="dropdown" class="dropdown-content">
+            <p id="link">Language: </p>
+          <p id="link" class="link" >de</p>
+          <p id="link" class="link">en</p>
+          <p id="link" class="link">fr</p>
+          <p id="link" class="link">fin</p>
+        </div>
+      </div>
+
     <div class="content">
         
     <div class="select">
@@ -184,6 +194,13 @@
         collection.each(function() {
             $(this).remove();
         });
+    }
+
+    $(".link").click(function(){
+        loadLanguage($(this).text());
+    })
+    function dropdown(){        
+  document.getElementById("dropdown").classList.toggle("show");
     }
 
 
