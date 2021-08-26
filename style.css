@@ -85,6 +85,12 @@ td {
   right: 0;
   margin: 10px;
 }
+@media screen and (max-width: 1000px) {
+  .lang-select {
+    position:inherit;
+    margin-left: 5%;
+  }
+}
 
 .button {
   margin: 10px;
