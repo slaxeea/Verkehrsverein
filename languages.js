@@ -1,7 +1,5 @@
-
-
 function loadLanguage(langCode) {
-    localStorage.clear();
+  localStorage.setItem("oldLangCode", localStorage.getItem("langCode"));
   localStorage.setItem("langCode", langCode);
   $.getJSON(`lang/${langCode}.json`, function (data) {
     for (var i = 0; i < 5; i++) {
@@ -28,7 +26,7 @@ function loadLanguage(langCode) {
     localStorage.setItem("all", data.all);
     localStorage.setItem("schlecht", data.bad);
     localStorage.setItem("gut", data.good);
-    
+
     empty();
     renderNormal();
   });
@@ -39,7 +37,7 @@ function getWord(word) {
   return data;
 }
 
-function translate(text, fromlang, tolang){
+function translate(text, fromlang, tolang) {
   var url = `https://libretranslate.de/translate?source=${fromlang}&target=${tolang}&q=${text}`;
 
   var request = new XMLHttpRequest();
@@ -48,7 +46,7 @@ function translate(text, fromlang, tolang){
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
       var data = JSON.parse(this.response);
-      var result = data.translatedText;
+      let result = data.translatedText;
       return result;
     } else {
       console.error("Something went wrong. status:  " + request.status);
