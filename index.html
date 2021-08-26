@@ -17,6 +17,7 @@
     <div class="theme-select">
         <button class="theme-btn" id="dark">dark</button>
         <button class="theme-btn" id="light">light</button>
+        <button class="theme-btn" id="pastel">pastel</button>
     </div>
 
     <div class="lang-select">
@@ -95,6 +96,7 @@
 <script>
     $(document).ready(function () {
         $("#light").hide();
+        $("#pastel").hide();
         window.count = 0;
         localStorage.setItem("oldLangCode", "de");
         localStorage.setItem("langCode", "de");
@@ -219,9 +221,14 @@
             r.style.setProperty("--background-color", "rgba(0, 0, 0, 0.662)");
             r.style.setProperty("--font-color", "white");
         } else if (theme == "light") {
-            $("#dark").show();
+            $("#pastel").show();
             $("#light").hide();
             r.style.setProperty("--background-color", "rgba(214, 243, 253, 0.836)");
+            r.style.setProperty("--font-color", "black");
+        }else if (theme == "pastel") {
+            $("#dark").show();
+            $("#pastel").hide();
+            r.style.setProperty("--background-color", "rgb(215, 255, 194)");
             r.style.setProperty("--font-color", "black");
         }
     });
