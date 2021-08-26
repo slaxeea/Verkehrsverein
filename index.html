@@ -13,6 +13,12 @@
 </head>
 
 <body>
+
+    <div class="theme-select">
+        <button class="theme-btn" id="dark">dark</button>
+        <button class="theme-btn" id="light">light</button>
+    </div>
+
     <div class="lang-select">
         <div id="dropdown" class="dropdown-content">
             <p id="link">Language: </p>
@@ -88,6 +94,7 @@
 
 <script>
     $(document).ready(function () {
+        $("#light").hide();
         window.count = 0;
         localStorage.setItem("oldLangCode", "de");
         localStorage.setItem("langCode", "de");
@@ -112,7 +119,7 @@
                 });
                 col = $(".select-btn");
                 col.each(function () {
-                    $(".select-btn").css("background-color", "rgba(214, 243, 253, 0.836)");
+                    $(".select-btn").css("background-color", "rgba(0, 0, 0, 0.462)");
                 });
             });
         }
@@ -129,7 +136,7 @@
             });
             col = $(".select-btn");
             col.each(function () {
-                $(".select-btn").css("background-color", "rgba(214, 243, 253, 0.836)");
+                $(".select-btn").css("background-color", "transparent");
             });
         });
 
@@ -151,9 +158,9 @@
         id = $(this).attr("class").replace('select-btn ', '');
         var col = $("." + id);
         col.each(function () {
-            $(this).css("background-color", "rgba(214, 243, 253, 0.836)");
+            $(this).css("background-color", "transparent");
         });
-        $(this).css("background-color", "rgba(0, 0, 0, 0.171)");
+        $(this).css("background-color", "rgba(0, 0, 0, 0.462)");
 
         rerender(id, $(this).text());
     });
@@ -191,17 +198,34 @@
             });
         });
     };
+
     function empty() {
         var collection = $(".row");
         collection.each(function () {
             $(this).remove();
         });
-    }
+    };
 
     $(".link").click(function () {
         loadLanguage($(this).text());
-    })
-  
+    });
+
+    $(".theme-btn").click(function () {
+        let theme = $(this).text();
+        var r = document.querySelector(':root');
+        if (theme == "dark") {
+            $("#light").show();
+            $("#dark").hide();
+            r.style.setProperty("--background-color", "rgba(0, 0, 0, 0.662)");
+            r.style.setProperty("--font-color", "white");
+        } else if (theme == "light") {
+            $("#dark").show();
+            $("#light").hide();
+            r.style.setProperty("--background-color", "rgba(214, 243, 253, 0.836)");
+            r.style.setProperty("--font-color", "black");
+        }
+    });
+
 </script>
 
 </html>

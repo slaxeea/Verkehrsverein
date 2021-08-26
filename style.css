@@ -1,12 +1,14 @@
 :root {
   --border-color: rgba(0, 0, 0, 0.562);
   --background-color: rgba(214, 243, 253, 0.836);
+  --font-color: black;
 }
 
 body {
   background-color: var(--background-color);
   text-align: left;
   font-family: "Courier New", Courier, monospace;
+  color: var(--font-color);
 }
 
 .select {
@@ -14,7 +16,7 @@ body {
   margin-top: 2%;
   padding-left: 5px;
   border: 1px solid var(--border-color);
-  background-color: var(--background-color);
+  background-color: transparent;
   width: 80%;
 }
 
@@ -45,19 +47,19 @@ body {
   padding-top: 5px;
   padding-bottom: 5px;
   border: 1px solid var(--border-color);
-  background-color: var(--background-color);
+  color: var(--font-color);
+  background-color: transparent;
   display: inline-block;
 }
-.select-btn:hover{
-  background-color: red;
-}
+
 #reset {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
   border: 1px solid var(--border-color);
-  background-color: var(--background-color);
+  color: var(--font-color);
+  background-color: transparent;
   display: inline-block;
 }
 
@@ -88,15 +90,28 @@ td {
   margin: 10px;
   padding: 10px;
   border: 1px solid var(--border-color);
-  background-color: var(--background-color);
+  background-color: transparent;
 }
 #link{
     display: inline-block   ;
     text-decoration: none;
-    color: black;
     margin-bottom: 0;
 }
 
 .link:hover{
   border-bottom: 1px solid black;
+}
+
+.theme-select{
+  position: absolute;
+  top: 0%;
+  right: 0;
+  margin: 1%
+}
+
+.theme-btn{
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: 1px solid var(--font-color);
+  padding: 5px;
 }
