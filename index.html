@@ -115,7 +115,6 @@
             $.getJSON('events.json', function (data) {
                 events = data.items;
                 $.each(events, function (key, val) {
-                    // console.log(val);
                     count = inc(count);
                     $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
                 });
@@ -141,7 +140,6 @@
                 $(".select-btn").css("background-color", "transparent");
             });
         });
-
     };
 
     function inc(current) {
@@ -195,7 +193,6 @@
                 function insert() {
                     newcount = inc(newcount);
                     $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
-
                 }
             });
         });
