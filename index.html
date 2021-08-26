@@ -19,7 +19,6 @@
             <p id="link" class="link">de</p>
             <p id="link" class="link">en</p>
             <p id="link" class="link">fr</p>
-            <!--<p id="link" class="link">fin</p>-->
         </div>
     </div>
 
@@ -82,9 +81,8 @@
             <tr id="firstrow">
             </tr>
         </table>
-
-
     </div>
+
 </body>
 
 <script>
@@ -117,7 +115,6 @@
                 });
             });
         }
-
     );
 
     function renderNormal() {
@@ -150,7 +147,6 @@
     }
 
     $(".select-btn").click(function () {
-        // console.log (`You selected: ${$(this).text()}`);
         id = $(this).attr("class").replace('select-btn ', '');
         var col = $("." + id);
         col.each(function () {
@@ -207,9 +203,6 @@
     function dropdown() {
         document.getElementById("dropdown").classList.toggle("show");
     }
-
-
 </script>
-
 
 </html>

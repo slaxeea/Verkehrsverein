@@ -48,11 +48,9 @@ body {
   background-color: var(--background-color);
   display: inline-block;
 }
-
-.select-btn:hover {
-  background-color: rgba(0, 0, 0, 0.171);
+.select-btn:hover{
+  background-color: red;
 }
-
 #reset {
   padding-left: 20px;
   padding-right: 20px;
@@ -88,7 +86,7 @@ td {
 @media screen and (max-width: 1000px) {
   .lang-select {
     position:inherit;
-    margin-left: 5%;
+    margin-left: 10%;
   }
 }
 
