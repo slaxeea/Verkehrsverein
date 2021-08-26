@@ -110,8 +110,13 @@ td {
 }
 
 .theme-btn{
-  background-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border: 1px solid var(--border-color);
-  color: 1px solid var(--font-color);
-  padding: 5px;
+  color: var(--font-color);
+  background-color: transparent;
+  display: inline-block;
 }
+
