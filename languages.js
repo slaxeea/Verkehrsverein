@@ -39,3 +39,21 @@ function getWord(word) {
   return data;
 }
 
+function translate(text, fromlang, tolang){
+  var url = `https://libretranslate.de/translate?source=${fromlang}&target=${tolang}&q=${text}`;
+
+  var request = new XMLHttpRequest();
+  request.open("POST", url, true);
+
+  request.onload = function () {
+    if (request.status >= 200 && request.status < 400) {
+      var data = JSON.parse(this.response);
+      var result = data.translatedText;
+      return result;
+    } else {
+      console.error("Something went wrong. status:  " + request.status);
+    }
+  };
+
+  request.send();
+}
