@@ -37,7 +37,7 @@ function getWord(word) {
   return data;
 }
 
-function translate(text, fromlang, tolang) {
+function translate (text, fromlang, tolang) {
   var url = `https://libretranslate.de/translate?source=${fromlang}&target=${tolang}&q=${text}`;
 
   var request = new XMLHttpRequest();
@@ -46,8 +46,7 @@ function translate(text, fromlang, tolang) {
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
       var data = JSON.parse(this.response);
-      let result = data.translatedText;
-      return result;
+      console.log(data.translatedText);
     } else {
       console.error("Something went wrong. status:  " + request.status);
     }
