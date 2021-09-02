@@ -19,12 +19,12 @@
             "title": "Kids",
             "good": "Yes",
             "bad": "No",
-            "all": "Both"
+            "all": "Always"
         }, {
             "title": "On Weekends",
             "good": "Yes",
             "bad": "No",
-            "all": "All Week"
+            "all": "Always"
         }
     ],
 
@@ -32,6 +32,7 @@
         "Name",
         "Kids",
         "Weather",
+        "Time",
         "Weekend",
         "Holiday"
     ],

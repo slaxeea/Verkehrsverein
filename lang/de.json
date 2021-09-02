@@ -19,7 +19,7 @@
             "title": "Kinder",
             "good": "Ja",
             "bad": "Nein",
-            "all": "Beides"
+            "all": "Immer"
         }, {
             "title": "Wochenende",
             "good": "Ja",
@@ -32,6 +32,7 @@
         "Titel",
         "Kinder",
         "Wetter",
+        "Tageszeit",
         "Wochenende",
         "Ferien"
     ],

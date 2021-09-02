@@ -19,12 +19,12 @@
             "title": "Kids",
             "good": "Oui",
             "bad": "Non",
-            "all": "Les deux"
+            "all": "Toujours"
         }, {
             "title": "Les week-ends",
             "good": "Oui",
             "bad": "Non",
-            "all": "Toute la semaine"
+            "all": "Toujours"
         }
     ],
 
@@ -32,6 +32,7 @@
         "Nom",
         "Enfants",
         "Météo",
+        "Heure de la journée",  
         "Weekend",
         "Vacances"
     ],

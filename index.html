@@ -161,8 +161,8 @@
             $(this).css("background-color", "transparent");
         });
         $(this).css("background-color", "rgba(0, 0, 0, 0.462)");
-
-        rerender(id, $(this).text());
+        var value = ($(this).text());
+        rerender(id, value);
     });
 
     function rerender(criteria, value) {
@@ -173,23 +173,25 @@
             var newcount = 0;
             $.each(events, function (key, val) {
                 resetcount();
+                var all = getWord("all");
                 switch (criteria) {
                     case 'wetter':
-                        if (val.weather == value || value == 'all' || val.weather == 'all') { insert() };
+                        if (getWord(val.weather) == value || value == all || (val.weather) == 'all') { insert() };
                         break;
                     case 'zeit':
-                        if (val.time == value || value == 'all' || val.time == 'all') { insert() };
+                        if (getWord(val.time) == value || value == all || (val.time) == 'all') { insert() };
                         break;
                     case 'ferien':
-                        if (val.holiday == value || value == 'all' || val.holiday == 'all') { insert() };
+                        if (getWord(val.holiday) == value || value == all || (val.holiday) == 'all') { insert() };
                         break;
                     case 'kinder':
-                        if (val.kids == value || value == 'all' || val.kids == 'all') { insert() };
+                        if (getWord(val.kids) == value || value == all || val.kids == 'all') { insert() };
                         break;
                     case 'wochenende':
-                        if (val.open == value || value == 'all' || val.open == 'all') { insert() };
+                        if (getWord(val.open) == value || value == all || val.open == 'all') { insert() };
                         break;
                 }
+
                 function insert() {
                     newcount = inc(newcount);
                     $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
@@ -222,7 +224,7 @@
             $("#light").hide();
             r.style.setProperty("--background-color", "rgba(214, 243, 253, 0.836)");
             r.style.setProperty("--font-color", "black");
-        }else if (theme == "pastel") {
+        } else if (theme == "pastel") {
             $("#dark").show();
             $("#pastel").hide();
             r.style.setProperty("--background-color", "rgb(215, 255, 194)");
