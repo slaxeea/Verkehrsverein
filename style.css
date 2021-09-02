@@ -81,7 +81,7 @@ td {
 
 @media screen and (max-width: 100000px) {
   .lang-select {
-    position:inherit;
+    position: inherit;
     margin-left: 10%;
   }
 }
@@ -92,24 +92,24 @@ td {
   border: 1px solid var(--border-color);
   background-color: transparent;
 }
-#link{
-    display: inline-block   ;
-    text-decoration: none;
-    margin-bottom: 0;
+#link {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 0;
 }
 
-.link:hover{
+.link:hover {
   border-bottom: 1px solid black;
 }
 
-.theme-select{
+.theme-select {
   position: absolute;
   top: 0%;
   right: 0;
-  margin: 1%
+  margin: 1%;
 }
 
-.theme-btn{
+.theme-btn {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 5px;
@@ -120,3 +120,12 @@ td {
   display: inline-block;
 }
 
+.input {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 20%;
+  margin-bottom: 10px;
+  color: var(--font-color);
+}

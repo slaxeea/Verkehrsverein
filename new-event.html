@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="languages.js"></script>
+    <script src="new-event.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+    <title>Verkehrsverein</title>
+</head>
+
+<body>
+
+    <div class="theme-select">
+        <button class="theme-btn" id="dark">dark</button>
+        <button class="theme-btn" id="light">light</button>
+        <button class="theme-btn" id="pastel">pastel</button>
+    </div>
+
+    <div class="lang-select">
+        <div id="dropdown" class="dropdown-content">
+            <p id="link">Language: </p>
+            <p id="link" class="link">de</p>
+            <p id="link" class="link">en</p>
+            <p id="link" class="link">fr</p>
+            <p id="link" class="link">fin</p>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="select">
+            <p>New Event</p>
+
+            <form id="form">
+                <div class="">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="input" id="name">
+                    <br>
+                    <label for="name">Date</label>
+                    <input type="text" name="date" class="input" id="date">
+
+                    <br><br>
+
+                    <p>Weather</p>
+                    <input type="radio" name="weather" value="ja" id="weather1">
+                    <label for="weather1">Good</label><br>
+                    <input type="radio" name="weather" value="nein" id="weather2">
+                    <label for="weather2">Bad</label><br>
+                    <input type="radio" name="weather" value="all" id="weather3">
+                    <label for="weather1">All weather</label>
+                
+                    <br><br>
+
+                    <p>Time of day</p>
+                    <input type="radio" name="time" value="ja" id="time1">
+                    <label for="time1">Day</label><br>
+                    <input type="radio" name="time" value="nein" id="time2">
+                    <label for="time2">Night</label><br>
+                    <input type="radio" name="time" value="all" id="time3">
+                    <label for="time1">All day</label>
+                </div>
+                <div class="">
+                    <br><br>
+
+                    <p>At the weekend</p>
+                    <input type="radio" name="open" value="ja" id="open1">
+                    <label for="open1">Yes</label><br>
+                    <input type="radio" name="open" value="nein" id="open2">
+                    <label for="open2">No</label><br>
+                    <input type="radio" name="open" value="all" id="open3">
+                    <label for="open1">All week</label>
+
+                    <br><br>
+
+                    <p>With kids</p>
+                    <input type="radio" name="kids" value="ja" id="kids1">
+                    <label for="kids1">Yes</label><br>
+                    <input type="radio" name="kids" value="nein" id="kids2">
+                    <label for="kids2">No</label><br>
+                    <input type="radio" name="kids" value="all" id="kids3">
+                    <label for="kids1">Both</label>
+
+                    <br><br>
+
+                    <p>During holidays</p>
+                    <input type="radio" name="holiday" value="ja" id="holiday1">
+                    <label for="holiday1">Yes</label><br>
+                    <input type="radio" name="holiday" value="nein" id="holiday2">
+                    <label for="holiday2">No</label><br>
+                    <input type="radio" name="holiday" value="all" id="holiday3">
+                    <label for="holiday1">All the time</label>
+                </div>  
+            </form>
+            <br>
+            <button class="select-btn" style="margin-bottom: 10px;" id="submit">Done</button>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    $("#submit").click(function(){
+        submitForm();
+    })
+
+
+    $(".theme-btn").click(function () {
+        let theme = $(this).text();
+        var r = document.querySelector(":root");
+        if (theme == "dark") {
+            $("#light").show();
+            $("#dark").hide();
+            r.style.setProperty("--background-color", "rgba(0, 0, 0, 0.662)");
+            r.style.setProperty("--font-color", "white");
+        } else if (theme == "light") {
+            $("#pastel").show();
+            $("#light").hide();
+            r.style.setProperty("--background-color", "rgba(214, 243, 253, 0.836)");
+            r.style.setProperty("--font-color", "black");
+        } else if (theme == "pastel") {
+            $("#dark").show();
+            $("#pastel").hide();
+            r.style.setProperty("--background-color", "rgb(215, 255, 194)");
+            r.style.setProperty("--font-color", "black");
+        }
+    });
+
+    $(".link").click(function () {
+        loadLanguage($(this).text());
+    });
+
+
+</script>
+
+</html>

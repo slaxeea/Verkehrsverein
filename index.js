@@ -69,7 +69,16 @@ function renderNormal() {
         )}</td>  </tr> `
       ).insertAfter("#firstrow");
     });
-    col = $(".select-btn");
+    e = JSON.parse(localStorage.getItem("event"));
+    col = $(".select-btn");$(
+      `<tr class="row" id="row">  <td>${e.name}</td>  <td>${getWord(
+        e.kids
+      )}</td>  <td>${getWord(e.weather)}</td>  <td>${getWord(
+        e.time
+      )}</td>  <td>${getWord(e.open)}</td>  <td>${getWord(
+        e.holiday
+      )}</td>  </tr> `
+    ).insertAfter("#firstrow");
     col.each(function () {
       $(".select-btn").css("background-color", "transparent");
     });
