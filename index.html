@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="languages.js"></script>
+    <script src="index.js"></script>
     <title>Verkehrsverein</title>
 </head>
 
@@ -94,77 +95,12 @@
 </body>
 
 <script>
-    $(document).ready(function () {
-        $("#light").hide();
-        $("#pastel").hide();
-        window.count = 0;
-        localStorage.setItem("oldLangCode", "de");
-        localStorage.setItem("langCode", "de");
-        renderNormal();
-        loadLanguage("de");
-
-        values = {
-            "weather": "all", "time": "all", "holiday": "all", "kids": "all", "open": "all",
-        };
-        localStorage.setItem("values", JSON.stringify(values));
+    $("#reset").click(function () {
+        reset();
     });
 
-    $("#reset").click(
-        function () {
-            resetcount();
-            var collection = $(".row");
-            collection.each(function () {
-                $(this).remove();
-            });
-            var count = 0;
-            $.getJSON('events.json', function (data) {
-                events = data.items;
-                $.each(events, function (key, val) {
-                    count = inc(count);
-                    $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
-                });
-                col = $(".select-btn");
-                col.each(function () {
-                    $(".select-btn").css("background-color", "transparent");
-                });
-            });
-            values = {
-                "weather": "all", "time": "all", "holiday": "all", "kids": "all", "open": "all",
-            };
-            localStorage.setItem("values", JSON.stringify(values));
-        }
-    );
-
-    function renderNormal() {
-        var counter = 0;
-        $.getJSON('events.json', function (data) {
-            events = data.items;
-            $.each(events, function (key, val) {
-                counter = inc(counter);
-                $(`<tr class="row" id="row">  <td>${val.name}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
-
-            });
-            col = $(".select-btn");
-            col.each(function () {
-                $(".select-btn").css("background-color", "transparent");
-            });
-        });
-    };
-
-    function inc(current) {
-        var count = current;
-        count++;
-        window.count = count;
-        $("#count").text(count);
-        return count;
-    }
-    function resetcount() {
-        window.count = 0;
-        $("#count").text("0");
-    }
-
     $(".select-btn").click(function () {
-        id = $(this).attr("class").replace('select-btn ', '');
+        id = $(this).attr("class").replace("select-btn ", "");
         var col = $("." + id);
         col.each(function () {
             $(this).css("background-color", "transparent");
@@ -172,11 +108,11 @@
         $(this).css("background-color", "rgba(0, 0, 0, 0.462)");
         // var value = ($(this).text());
         if ($(this).attr("id").includes("good", 8)) {
-            val = "ja"
+            val = "ja";
         } else if ($(this).attr("id").includes("bad", 8)) {
-            val = "nein"
+            val = "nein";
         } else {
-            val = "all"
+            val = "all";
         }
         console.log(val);
 
@@ -189,44 +125,9 @@
         rerender();
     });
 
-    function rerender() {
-        empty();
-        values = localStorage.getItem("values");
-        values = JSON.parse(values);
-        $.getJSON('events.json', function (data) {
-            events = data.items;
-            var newcount = 0;
-            $.each(events, function (key, val) {
-                resetcount();
-                correct = 0;
-                // console.log(val.weather + "  " + values.weather);
-                correct = (val.weather == values.weather || val.weather == "all" || values.weather == "all") ? correct + 1 : correct;
-                correct = (val.time == values.time || val.time == "all" || values.time == "all") ? correct + 1 : correct;
-                correct = (val.holiday == values.holiday || val.holiday == "all" || values.holiday == "all") ? correct + 1 : correct;
-                correct = (val.kids == values.kids || val.kids == "all" || values.kids == "all") ? correct + 1 : correct;
-                correct = (val.open == values.open || val.open == "all" || values.open == "all") ? correct + 1 : correct;
-                if (correct >= 5) {
-                    newcount = inc(newcount);
-                    $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
-                }
-            });
-        });
-    };
-
-    function empty() {
-        var collection = $(".row");
-        collection.each(function () {
-            $(this).remove();
-        });
-    };
-
-    $(".link").click(function () {
-        loadLanguage($(this).text());
-    });
-
     $(".theme-btn").click(function () {
         let theme = $(this).text();
-        var r = document.querySelector(':root');
+        var r = document.querySelector(":root");
         if (theme == "dark") {
             $("#light").show();
             $("#dark").hide();
@@ -245,6 +146,10 @@
         }
     });
 
+    $(".link").click(function () {
+  loadLanguage($(this).text());
+});
 </script>
+
 
 </html>
