@@ -32,14 +32,11 @@ function submitForm() {
     name: eventname,
     date: eventdate,
     weather: eventweather,
+    time: eventtime,
     open: eventopen,
     kids: eventkids,
     holiday: eventholiday,
-    time: eventtime,
   };
-
-  // console.log((newevent));
-
 
   localStorage.setItem("event", JSON.stringify(newevent));
   window.location.href = "index.html";
