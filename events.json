@@ -21,8 +21,8 @@
     {
         "name": "Freibad",
         "date": "01.08.2022",
-        "weather": "gut",
-        "time": "tag",
+        "weather": "ja",
+        "time": "ja",
         "open": "nein",
         "kids": "all",
         "holiday": "all"
@@ -39,8 +39,8 @@
     {
         "name": "Wandern",
         "date": "01.08.2022",
-        "weather": "gut",
-        "time": "tag",
+        "weather": "ja",
+        "time": "ja",
         "open": "all",
         "kids": "all",
         "holiday": "all"
@@ -49,16 +49,16 @@
         "name": "Musikkurs",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "nacht",
+        "time": "nein",
         "open": "ja",
         "kids": "all",
         "holiday": "nein"
     },
     {
-        "name": "Brotbackkurs Tag",
+        "name": "Brotbackkurs ja",
         "date": "01.08.2022",
-        "weather": "schlecht",
-        "time": "tag",
+        "weather": "nein",
+        "time": "ja",
         "open": "ja",
         "kids": "all",
         "holiday": "nein"
@@ -66,8 +66,8 @@
     {
         "name": "Brotbackkurs Abend",
         "date": "01.08.2022",
-        "weather": "schlecht",
-        "time": "nacht",
+        "weather": "nein",
+        "time": "nein",
         "open": "ja",
         "kids": "all",
         "holiday": "nein"
@@ -76,7 +76,7 @@
         "name": "Schieferbergwerk",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "tag",
+        "time": "ja",
         "open": "all",
         "kids": "all",
         "holiday": "nein"
@@ -85,7 +85,7 @@
         "name": "Schieferbergwerk Abendführung",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "nacht",
+        "time": "nein",
         "open": "all",
         "kids": "all",
         "holiday": "nein"
@@ -93,8 +93,8 @@
     {
         "name": "Go-Kurse am Wochenende",
         "date": "01.08.2022",
-        "weather": "schlecht",
-        "time": "tag",
+        "weather": "nein",
+        "time": "ja",
         "open": "ja",
         "kids": "all",
         "holiday": "nein"
@@ -102,8 +102,8 @@
     {
         "name": "Go-Kurse unter der Woche",
         "date": "01.08.2022",
-        "weather": "schlecht",
-        "time": "nacht",
+        "weather": "nein",
+        "time": "nein",
         "open": "nein",
         "kids": "all",
         "holiday": "nein"
@@ -112,7 +112,7 @@
         "name": "Biliard",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "nacht",
+        "time": "nein",
         "open": "nein",
         "kids": "nein",
         "holiday": "all"
@@ -121,7 +121,7 @@
         "name": "Biliard am Wochenende",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "nacht",
+        "time": "nein",
         "open": "ja",
         "kids": "nein",
         "holiday": "all"
@@ -130,7 +130,7 @@
         "name": "Rennautofahren",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "tag",
+        "time": "ja",
         "open": "ja",
         "kids": "nein",
         "holiday": "ja"
@@ -138,7 +138,7 @@
     {
         "name": "Korbflechten",
         "date": "01.08.2022",
-        "weather": "schlecht",
+        "weather": "nein",
         "time": "all",
         "open": "nein",
         "kids": "all",
@@ -148,7 +148,7 @@
         "name": "Besuch des Wasserfalls",
         "date": "01.08.2022",
         "weather": "all",
-        "time": "tag",
+        "time": "ja",
         "open": "all",
         "kids": "all",
         "holiday": "all"

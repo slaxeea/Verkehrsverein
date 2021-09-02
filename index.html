@@ -37,37 +37,37 @@
 
             <div class="block">
                 <p class="inline" id="selector0"></p>
-                <button class="select-btn wetter" id="sel-btn0-good"></button>
-                <button class="select-btn wetter" id="sel-btn0-bad"></button>
-                <button class="select-btn wetter" id="sel-btn0-all"></button>
+                <button class="select-btn weather" id="sel-btn0-good"></button>
+                <button class="select-btn weather" id="sel-btn0-bad"></button>
+                <button class="select-btn weather" id="sel-btn0-all"></button>
 
                 <br>
 
                 <p class="inline" id="selector1"></p>
-                <button class="select-btn zeit" id="sel-btn1-good"></button>
-                <button class="select-btn zeit" id="sel-btn1-bad"></button>
-                <button class="select-btn zeit" id="sel-btn1-all"></button>
+                <button class="select-btn time" id="sel-btn1-good"></button>
+                <button class="select-btn time" id="sel-btn1-bad"></button>
+                <button class="select-btn time" id="sel-btn1-all"></button>
 
                 <br>
 
                 <p class="inline" id="selector2"></p>
-                <button class="select-btn ferien" id="sel-btn2-good"></button>
-                <button class="select-btn ferien" id="sel-btn2-bad"></button>
-                <button class="select-btn ferien" id="sel-btn2-all"></button>
+                <button class="select-btn holiday" id="sel-btn2-good"></button>
+                <button class="select-btn holiday" id="sel-btn2-bad"></button>
+                <button class="select-btn holiday" id="sel-btn2-all"></button>
             </div>
 
             <div class="block">
                 <p class="inline" id="selector3"></p>
-                <button class="select-btn kinder" id="sel-btn3-good"></button>
-                <button class="select-btn kinder" id="sel-btn3-bad"></button>
-                <button class="select-btn kinder" id="sel-btn3-all"></button>
+                <button class="select-btn kids" id="sel-btn3-good"></button>
+                <button class="select-btn kids" id="sel-btn3-bad"></button>
+                <button class="select-btn kids" id="sel-btn3-all"></button>
 
                 <br>
 
                 <p class="inline" id="selector4"></p>
-                <button class="select-btn wochenende" id="sel-btn4-good"></button>
-                <button class="select-btn wochenende" id="sel-btn4-bad"></button>
-                <button class="select-btn wochenende" id="sel-btn4-all"></button>
+                <button class="select-btn open" id="sel-btn4-good"></button>
+                <button class="select-btn open" id="sel-btn4-bad"></button>
+                <button class="select-btn open" id="sel-btn4-all"></button>
 
                 <br>
 
@@ -102,6 +102,11 @@
         localStorage.setItem("langCode", "de");
         renderNormal();
         loadLanguage("de");
+
+        values = {
+            "weather": "all", "time": "all", "holiday": "all", "kids": "all", "open": "all",
+        };
+        localStorage.setItem("values", JSON.stringify(values));
     });
 
     $("#reset").click(
@@ -123,6 +128,10 @@
                     $(".select-btn").css("background-color", "transparent");
                 });
             });
+            values = {
+                "weather": "all", "time": "all", "holiday": "all", "kids": "all", "open": "all",
+            };
+            localStorage.setItem("values", JSON.stringify(values));
         }
     );
 
@@ -161,38 +170,42 @@
             $(this).css("background-color", "transparent");
         });
         $(this).css("background-color", "rgba(0, 0, 0, 0.462)");
-        var value = ($(this).text());
-        rerender(id, value);
+        // var value = ($(this).text());
+        if ($(this).attr("id").includes("good", 8)) {
+            val = "ja"
+        } else if ($(this).attr("id").includes("bad", 8)) {
+            val = "nein"
+        } else {
+            val = "all"
+        }
+        console.log(val);
+
+        values = localStorage.getItem("values");
+        values = JSON.parse(values);
+        values[id] = val;
+        values = JSON.stringify(values);
+        localStorage.setItem("values", values);
+
+        rerender();
     });
 
-    function rerender(criteria, value) {
+    function rerender() {
         empty();
-
+        values = localStorage.getItem("values");
+        values = JSON.parse(values);
         $.getJSON('events.json', function (data) {
             events = data.items;
             var newcount = 0;
             $.each(events, function (key, val) {
                 resetcount();
-                var all = getWord("all");
-                switch (criteria) {
-                    case 'wetter':
-                        if (getWord(val.weather) == value || value == all || (val.weather) == 'all') { insert() };
-                        break;
-                    case 'zeit':
-                        if (getWord(val.time) == value || value == all || (val.time) == 'all') { insert() };
-                        break;
-                    case 'ferien':
-                        if (getWord(val.holiday) == value || value == all || (val.holiday) == 'all') { insert() };
-                        break;
-                    case 'kinder':
-                        if (getWord(val.kids) == value || value == all || val.kids == 'all') { insert() };
-                        break;
-                    case 'wochenende':
-                        if (getWord(val.open) == value || value == all || val.open == 'all') { insert() };
-                        break;
-                }
-
-                function insert() {
+                correct = 0;
+                // console.log(val.weather + "  " + values.weather);
+                correct = (val.weather == values.weather || val.weather == "all" || values.weather == "all") ? correct + 1 : correct;
+                correct = (val.time == values.time || val.time == "all" || values.time == "all") ? correct + 1 : correct;
+                correct = (val.holiday == values.holiday || val.holiday == "all" || values.holiday == "all") ? correct + 1 : correct;
+                correct = (val.kids == values.kids || val.kids == "all" || values.kids == "all") ? correct + 1 : correct;
+                correct = (val.open == values.open || val.open == "all" || values.open == "all") ? correct + 1 : correct;
+                if (correct >= 5) {
                     newcount = inc(newcount);
                     $(`<tr class="row" id="row">  <td>${(val.name)}</td>  <td>${getWord(val.kids)}</td>  <td>${getWord(val.weather)}</td>  <td>${getWord(val.time)}</td>  <td>${getWord(val.open)}</td>  <td>${getWord(val.holiday)}</td>  </tr> `).insertAfter("#firstrow");
                 }

@@ -54,11 +54,3 @@ function translate (text, fromlang, tolang) {
 
   request.send();
 }
-
-function getTH(original){
-  localStorage.getItem("langCode");
-  $.getJSON(`lang/${langCode}.json`, function (data) {
-  var word = data.items.th[original];
-  return "";
-  });
-};
