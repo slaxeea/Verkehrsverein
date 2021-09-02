@@ -10,6 +10,7 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="languages.js"></script>
     <script src="index.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
     <title>Verkehrsverein</title>
 </head>
 
@@ -114,8 +115,6 @@
         } else {
             val = "all";
         }
-        console.log(val);
-
         values = localStorage.getItem("values");
         values = JSON.parse(values);
         values[id] = val;
@@ -147,8 +146,8 @@
     });
 
     $(".link").click(function () {
-  loadLanguage($(this).text());
-});
+        loadLanguage($(this).text());
+    });
 </script>
 
 
