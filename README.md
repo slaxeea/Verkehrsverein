@@ -12,6 +12,8 @@ Features:
 - change between three different themes for the page, light mode, dark mode or maybe an experimental lime?
 - sort by five different criteria
 - counts the number of results for your query (don't laugh, this took me embarassingly long)
+- add new events by visiting the new-event.html page
+  (the new events are deleted if you use another browser tho)
 
 
 enjoy  :)
